@@ -7,16 +7,10 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
 // Mailchimp Configuration
-// Extract list ID and datacenter from the provided ID
-// Format: {list_id}-{datacenter}
 // Note: These are public identifiers, not secret API keys
 const MAILCHIMP_LIST_ID = "e566bb3abc5449e845b070a7dbb9702a";
 const MAILCHIMP_DATACENTER = "us11";
-// Note: You'll need your Mailchimp User ID (u parameter) from your Mailchimp dashboard
-// Get it from: Mailchimp Dashboard > Audience > All contacts > Settings > Audience name and defaults
-// Or from the embedded form code in Mailchimp (look for the "u=" parameter in the form action URL)
-// For now, using the list ID as fallback - update with your actual User ID for full functionality
-const MAILCHIMP_USER_ID = MAILCHIMP_LIST_ID; // Update with your actual User ID from Mailchimp dashboard
+const MAILCHIMP_USER_ID = "2c8f4ede48"; // Audience ID from Mailchimp
 
 const footerLinks = {
   company: [
@@ -136,7 +130,7 @@ export function Footer() {
               </a>
               <div className="flex items-center gap-2">
                 <MapPin size={16} />
-                Abuja, Nigeria
+                No. 10 Durban Street, Wuse 2, Abuja, Nigeria
               </div>
             </div>
             {/* Social Media Links */}
