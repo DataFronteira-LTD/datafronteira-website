@@ -1,24 +1,28 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Mail, Phone, MapPin } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const footerLinks = {
   company: [
     { label: "About Us", href: "/about" },
     { label: "Services", href: "/services" },
-    { label: "Careers", href: "/contact" },
     { label: "Contact", href: "/contact" },
   ],
   services: [
-    { label: "Data Analytics", href: "/services" },
-    { label: "Data Management", href: "/services" },
-    { label: "Visualization", href: "/services" },
-    { label: "Consulting", href: "/services" },
+    { label: "Data Analytics", href: "/services/data-analytics" },
+    { label: "Training & Support", href: "/services/training-support" },
+    { label: "Data Management", href: "/services/data-management" },
+    { label: "Reporting & Visualization", href: "/services/reporting-visualization" },
+    { label: "Data Strategy", href: "/services/data-strategy" },
   ],
-  resources: [
-    { label: "Blog", href: "#" },
-    { label: "Case Studies", href: "#" },
-    { label: "Documentation", href: "#" },
-    { label: "Academy", href: "#" },
+  industries: [
+    { label: "Healthcare", href: "/industries/healthcare" },
+    { label: "Finance", href: "/industries/finance" },
+    { label: "Retail", href: "/industries/retail" },
+    { label: "Manufacturing", href: "/industries/manufacturing" },
+    { label: "Technology", href: "/industries/technology" },
+    { label: "Agriculture", href: "/industries/agriculture" },
+    { label: "Others", href: "/industries/others" },
   ],
 };
 
@@ -30,16 +34,10 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center border border-primary/30">
-                <span className="text-primary font-display font-bold text-xl">D</span>
-              </div>
-              <span className="font-display font-semibold text-xl text-foreground">
-                Data<span className="text-primary">Fronteira</span>
-              </span>
+              <img src={logo} alt="DataFronteira" className="h-10 w-auto" />
             </Link>
             <p className="text-muted-foreground mb-6 max-w-sm">
-              Transforming data into actionable insights. We help businesses make smarter, 
-              data-driven decisions that drive growth and innovation.
+              Powering rewarding decisions. We help businesses transform data into actionable insights that drive growth and innovation.
             </p>
             <div className="flex flex-col gap-3 text-sm text-muted-foreground">
               <a href="mailto:email@datafronteira.com" className="flex items-center gap-2 hover:text-primary transition-colors">
@@ -57,26 +55,9 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Links */}
+          {/* Services Links */}
           <div>
-            <h4 className="font-display font-semibold text-foreground mb-4">Company</h4>
-            <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    to={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-1 group"
-                  >
-                    {link.label}
-                    <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-display font-semibold text-foreground mb-4">Services</h4>
+            <h4 className="font-display font-semibold text-foreground mb-4">What We Do</h4>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.label}>
@@ -92,10 +73,29 @@ export function Footer() {
             </ul>
           </div>
 
+          {/* Industries Links */}
           <div>
-            <h4 className="font-display font-semibold text-foreground mb-4">Resources</h4>
+            <h4 className="font-display font-semibold text-foreground mb-4">Industries</h4>
             <ul className="space-y-3">
-              {footerLinks.resources.map((link) => (
+              {footerLinks.industries.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    to={link.href}
+                    className="text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-1 group"
+                  >
+                    {link.label}
+                    <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Company Links */}
+          <div>
+            <h4 className="font-display font-semibold text-foreground mb-4">Company</h4>
+            <ul className="space-y-3">
+              {footerLinks.company.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.href}
