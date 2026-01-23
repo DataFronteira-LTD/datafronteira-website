@@ -143,11 +143,8 @@ export function Navbar() {
         {/* CTA & Theme Toggle */}
         <div className="hidden lg:flex items-center gap-3">
           <ThemeToggle />
-          <Button variant="ghost" size="sm" asChild>
-            <Link to="/contact">Request Demo</Link>
-          </Button>
           <Button size="sm" className="glow" asChild>
-            <Link to="/contact">Get Started</Link>
+            <Link to="/contact">Let's Talk</Link>
           </Button>
         </div>
 
@@ -226,11 +223,8 @@ export function Navbar() {
                 </div>
               ))}
               <div className="flex flex-col gap-3 pt-4 border-t border-border">
-                <Button variant="outline" asChild>
-                  <Link to="/contact">Request Demo</Link>
-                </Button>
                 <Button asChild>
-                  <Link to="/contact">Get Started</Link>
+                  <Link to="/contact">Let's Talk</Link>
                 </Button>
               </div>
             </nav>

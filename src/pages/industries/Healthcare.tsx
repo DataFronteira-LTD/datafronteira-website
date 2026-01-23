@@ -55,7 +55,7 @@ export default function Healthcare() {
             </p>
             <div className="flex flex-wrap gap-4">
               <Button size="lg" className="glow" asChild>
-                <Link to="/contact">Get Started</Link>
+                <Link to="/contact">Let's Talk</Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
                 <Link to="/services">Our Services</Link>

@@ -52,7 +52,7 @@ export function HeroSection() {
             <div className="flex flex-wrap gap-4">
               <Button size="lg" className="glow group" asChild>
                 <Link to="/contact">
-                  Get Started
+                  Let's Talk
                   <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
                 </Link>
               </Button>
