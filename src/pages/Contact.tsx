@@ -1,4 +1,5 @@
 import { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { 
@@ -21,13 +22,19 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from "@emailjs/browser";
+
+// EmailJS Configuration
+const EMAILJS_PUBLIC_KEY = "OgzxDm5d23KAiLsTvTM5a";
+const EMAILJS_SERVICE_ID = "service_pgpgob8";
+const EMAILJS_TEMPLATE_ID = "template_dbbt20w";
 
 const contactInfo = [
   {
     icon: Mail,
     title: "Email Us",
-    value: "email@datafronteira.com",
-    link: "mailto:email@datafronteira.com",
+    value: "hi@datafronteira.com",
+    link: "mailto:hi@datafronteira.com",
     note: "We typically respond within 24 hours",
   },
   {
@@ -57,21 +64,69 @@ const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    enquiryType: "",
+    message: "",
+  });
+
+  // Initialize EmailJS
+  React.useEffect(() => {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. We'll get back to you soon.",
-    });
+    const templateParams = {
+      firstName: formData.firstName,
+      surname: formData.lastName || "",
+      email: formData.email,
+      phone: formData.phone || "",
+      enquiryType: formData.enquiryType,
+      message: formData.message,
+      to_email: "datafronteira@gmail.com",
+    };
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
+      
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      
+      // Reset form
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        enquiryType: "",
+        message: "",
+      });
+      
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out. We'll get back to you soon.",
+      });
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      setIsSubmitting(false);
+      
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -132,7 +187,17 @@ const Contact = () => {
                     <p className="text-muted-foreground mb-6">
                       Thank you for reaching out. We'll get back to you within 24 hours.
                     </p>
-                    <Button onClick={() => setIsSubmitted(false)}>
+                    <Button onClick={() => {
+                      setIsSubmitted(false);
+                      setFormData({
+                        firstName: "",
+                        lastName: "",
+                        email: "",
+                        phone: "",
+                        enquiryType: "",
+                        message: "",
+                      });
+                    }}>
                       Send Another Message
                     </Button>
                   </motion.div>
@@ -143,17 +208,23 @@ const Contact = () => {
                         <Label htmlFor="firstName">First Name *</Label>
                         <Input
                           id="firstName"
+                          name="firstName"
                           placeholder="John"
                           required
                           className="bg-secondary/50 border-border"
+                          value={formData.firstName}
+                          onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                         />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="lastName">Last Name</Label>
                         <Input
                           id="lastName"
+                          name="lastName"
                           placeholder="Doe"
                           className="bg-secondary/50 border-border"
+                          value={formData.lastName}
+                          onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                         />
                       </div>
                     </div>
@@ -163,26 +234,36 @@ const Contact = () => {
                         <Label htmlFor="email">Email *</Label>
                         <Input
                           id="email"
+                          name="email"
                           type="email"
                           placeholder="john@example.com"
                           required
                           className="bg-secondary/50 border-border"
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="phone">Phone Number</Label>
                         <Input
                           id="phone"
+                          name="phone"
                           type="tel"
                           placeholder="+234 700 000 0000"
                           className="bg-secondary/50 border-border"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         />
                       </div>
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="enquiryType">Enquiry Type *</Label>
-                      <Select required>
+                      <Select 
+                        required
+                        value={formData.enquiryType}
+                        onValueChange={(value) => setFormData({ ...formData, enquiryType: value })}
+                      >
                         <SelectTrigger className="bg-secondary/50 border-border">
                           <SelectValue placeholder="Select enquiry type" />
                         </SelectTrigger>
@@ -194,16 +275,20 @@ const Contact = () => {
                           <SelectItem value="partnership">Partnership</SelectItem>
                         </SelectContent>
                       </Select>
+                      <input type="hidden" name="enquiryType" value={formData.enquiryType} />
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="message">Message *</Label>
                       <Textarea
                         id="message"
+                        name="message"
                         placeholder="Tell us about your project or enquiry..."
                         rows={5}
                         required
                         className="bg-secondary/50 border-border resize-none"
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       />
                     </div>
 

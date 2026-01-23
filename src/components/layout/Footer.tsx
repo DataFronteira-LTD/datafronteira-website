@@ -40,9 +40,9 @@ export function Footer() {
               Powering rewarding decisions. We help businesses transform data into actionable insights that drive growth and innovation.
             </p>
             <div className="flex flex-col gap-3 text-sm text-muted-foreground">
-              <a href="mailto:email@datafronteira.com" className="flex items-center gap-2 hover:text-primary transition-colors">
+              <a href="mailto:hi@datafronteira.com" className="flex items-center gap-2 hover:text-primary transition-colors">
                 <Mail size={16} />
-                email@datafronteira.com
+                hi@datafronteira.com
               </a>
               <a href="tel:+2347041300104" className="flex items-center gap-2 hover:text-primary transition-colors">
                 <Phone size={16} />
@@ -193,8 +193,8 @@ export function Footer() {
             © {new Date().getFullYear()} DataFronteira Ltd. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-muted-foreground">
-            <Link to="#" className="hover:text-foreground transition-colors">Privacy Policy</Link>
-            <Link to="#" className="hover:text-foreground transition-colors">Terms of Service</Link>
+            <Link to="/privacy-policy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
+            <Link to="/terms-of-service" className="hover:text-foreground transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

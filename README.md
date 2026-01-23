@@ -1,73 +1,147 @@
-# Welcome to your Lovable project
+# DataFronteira Website
 
-## Project info
+A modern, responsive website for DataFronteira Ltd - a dynamic consulting firm dedicated to transforming data into actionable insights. This website showcases the company's data analytics, data management, and business intelligence services.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## 🌐 Live Website
 
-## How can I edit this code?
+Visit the website at: [https://datafronteira.com](https://datafronteira.com)
 
-There are several ways of editing your application.
+## ✨ Features
 
-**Use Lovable**
+- **Modern UI/UX**: Beautiful, responsive design with dark/light theme support
+- **Service Showcase**: Detailed pages for all services including:
+  - Data Analytics & Insights
+  - Data Management Solutions
+  - Predictive Modeling & Forecasting
+  - Data Governance & Quality
+  - Reporting & Visualization
+  - Data Strategy Consulting
+  - Training & Support
+- **Industry Pages**: Dedicated pages for various industries (Healthcare, Finance, Retail, Manufacturing, Technology, Agriculture)
+- **Contact Form**: Integrated EmailJS contact form that sends emails directly to the company
+- **SEO Optimized**: Complete SEO setup with meta tags, Open Graph, structured data, and sitemap
+- **Live Chat**: Tawk.to integration for real-time customer support
+- **Privacy & Terms**: Complete Privacy Policy and Terms of Service pages
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## 🛠️ Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Framework**: React 18 with TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui (Radix UI primitives)
+- **Routing**: React Router DOM
+- **Animations**: Framer Motion
+- **Email Service**: EmailJS
+- **Live Chat**: Tawk.to
+- **Icons**: Lucide React
 
-**Use your preferred IDE**
+## 🚀 Getting Started
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Prerequisites
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Node.js 18+ and npm (or use [nvm](https://github.com/nvm-sh/nvm#installing-and-updating))
 
-Follow these steps:
+### Installation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1. Clone the repository:
+```bash
+git clone https://github.com/Lantid-Creative/frontier-forge.git
+cd frontier-forge
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+2. Install dependencies:
+```bash
+npm install
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+3. Start the development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+4. Open your browser and navigate to `http://localhost:5173` (or the port shown in terminal)
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📁 Project Structure
 
-**Use GitHub Codespaces**
+```
+frontier-forge/
+├── public/                 # Static assets
+│   ├── favicon.png         # Site favicon
+│   ├── robots.txt          # Search engine directives
+│   └── sitemap.xml         # Site map for SEO
+├── src/
+│   ├── components/         # React components
+│   │   ├── layout/         # Layout components (Navbar, Footer, Layout)
+│   │   ├── home/           # Homepage sections
+│   │   └── ui/             # Reusable UI components (shadcn/ui)
+│   ├── pages/              # Page components
+│   │   ├── services/      # Service detail pages
+│   │   └── industries/     # Industry-specific pages
+│   ├── hooks/              # Custom React hooks
+│   ├── lib/                # Utility functions
+│   └── main.tsx           # Application entry point
+├── index.html              # HTML template
+└── package.json            # Dependencies and scripts
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🔧 Configuration
 
-## What technologies are used for this project?
+### EmailJS Setup
 
-This project is built with:
+The contact form uses EmailJS to send emails. Configuration is in `src/pages/Contact.tsx`:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **Public Key**: `OgzxDm5d23KAiLsTvTM5a`
+- **Service ID**: `service_pgpgob8`
+- **Template ID**: `template_dbbt20w`
+- **Recipient Email**: `datafronteira@gmail.com`
 
-## How can I deploy this project?
+### Tawk.to Chat Widget
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+Live chat is configured in `index.html` with Tawk.to integration.
 
-## Can I connect a custom domain to my Lovable project?
+## 📝 Available Scripts
 
-Yes, you can!
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+- `npm test` - Run tests
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 🌍 SEO Features
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- Complete meta tags (title, description, keywords)
+- Open Graph tags for social media sharing
+- Twitter Card meta tags
+- Structured data (JSON-LD) for Organization schema
+- XML sitemap for search engines
+- Robots.txt configuration
+- Semantic HTML structure
+
+## 📧 Contact Information
+
+- **Email**: hi@datafronteira.com
+- **Phone**: +234 704 130 0104
+- **Address**: No. 10 Durban Street, Wuse 2, Abuja, Nigeria
+- **Business Hours**: Monday – Friday: 9AM – 5PM (GMT)
+
+## 🔗 Social Media
+
+- [LinkedIn](https://www.linkedin.com/company/datafronteira/)
+- [Twitter/X](https://x.com/datafronteira)
+- [Instagram](https://www.instagram.com/datafronteira/)
+- [Facebook](https://web.facebook.com/people/Datafronteira/)
+- [YouTube](https://www.youtube.com/@datafronteira)
+- [Medium](https://medium.com/@datafronteira)
+- [TikTok](https://www.tiktok.com/@datafronteira)
+
+## 📄 License
+
+© 2026 DataFronteira Ltd. All rights reserved.
+
+## 🤝 Contributing
+
+This is a private project for DataFronteira Ltd. For inquiries, please contact hi@datafronteira.com.
+
+---
+
+Built with ❤️ by DataFronteira Ltd
