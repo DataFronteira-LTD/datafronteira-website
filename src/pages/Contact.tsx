@@ -33,9 +33,16 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email Us",
-    value: "hi@datafronteira.com",
-    link: "mailto:hi@datafronteira.com",
+    value: "email@datafronteira.com",
+    link: "mailto:email@datafronteira.com",
     note: "We typically respond within 24 hours",
+  },
+  {
+    icon: Mail,
+    title: "Email Us",
+    value: "datafronteira@gmail.com",
+    link: "mailto:datafronteira@gmail.com",
+    note: "Alternative contact email",
   },
   {
     icon: Phone,

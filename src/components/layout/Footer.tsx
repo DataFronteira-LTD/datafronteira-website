@@ -1,6 +1,22 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Mail, Phone, MapPin, Instagram, Facebook, Twitter, Linkedin, Youtube } from "lucide-react";
+import { ArrowUpRight, Mail, Phone, MapPin, Instagram, Facebook, Twitter, Linkedin, Youtube, Send } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
+
+// Mailchimp Configuration
+// Extract list ID and datacenter from the provided ID
+// Format: {list_id}-{datacenter}
+// Note: These are public identifiers, not secret API keys
+const MAILCHIMP_LIST_ID = "e566bb3abc5449e845b070a7dbb9702a";
+const MAILCHIMP_DATACENTER = "us11";
+// Note: You'll need your Mailchimp User ID (u parameter) from your Mailchimp dashboard
+// Get it from: Mailchimp Dashboard > Audience > All contacts > Settings > Audience name and defaults
+// Or from the embedded form code in Mailchimp (look for the "u=" parameter in the form action URL)
+// For now, using the list ID as fallback - update with your actual User ID for full functionality
+const MAILCHIMP_USER_ID = MAILCHIMP_LIST_ID; // Update with your actual User ID from Mailchimp dashboard
 
 const footerLinks = {
   company: [
@@ -27,10 +43,76 @@ const footerLinks = {
 };
 
 export function Footer() {
+  const { toast } = useToast();
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email) return;
+    
+    setIsSubmitting(true);
+
+    try {
+      // Mailchimp embedded form approach
+      // The form will submit to Mailchimp's embedded form endpoint
+      // URL format: https://{datacenter}.list-manage.com/subscribe/post?u={user_id}&id={list_id}
+      // Note: If you have the full form action URL from Mailchimp dashboard, you can replace the action below
+      // Get it from: Mailchimp Dashboard > Audience > All contacts > Signup forms > Embedded forms
+      
+      const form = document.createElement("form");
+      form.method = "POST";
+      form.action = `https://${MAILCHIMP_DATACENTER}.list-manage.com/subscribe/post?u=${MAILCHIMP_USER_ID}&id=${MAILCHIMP_LIST_ID}`;
+      form.target = "_blank";
+      form.style.display = "none";
+      
+      const emailInput = document.createElement("input");
+      emailInput.type = "email";
+      emailInput.name = "EMAIL";
+      emailInput.value = email;
+      emailInput.required = true;
+      
+      // Add hidden honeypot field (Mailchimp best practice)
+      const honeypot = document.createElement("input");
+      honeypot.type = "text";
+      honeypot.name = `b_${MAILCHIMP_LIST_ID}_${MAILCHIMP_LIST_ID}`;
+      honeypot.tabIndex = -1;
+      honeypot.style.display = "none";
+      
+      form.appendChild(emailInput);
+      form.appendChild(honeypot);
+      document.body.appendChild(form);
+      form.submit();
+      
+      // Clean up after a short delay
+      setTimeout(() => {
+        if (document.body.contains(form)) {
+          document.body.removeChild(form);
+        }
+      }, 1000);
+      
+      setEmail("");
+      toast({
+        title: "Subscribed!",
+        description: "Thank you for subscribing to our newsletter.",
+      });
+    } catch (error) {
+      console.error("Newsletter subscription error:", error);
+      toast({
+        title: "Error",
+        description: "Failed to subscribe. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <footer className="border-t border-border bg-card/50">
       <div className="container mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-3 mb-6">
@@ -40,9 +122,13 @@ export function Footer() {
               Powering rewarding decisions. We help businesses transform data into actionable insights that drive growth and innovation.
             </p>
             <div className="flex flex-col gap-3 text-sm text-muted-foreground">
-              <a href="mailto:hi@datafronteira.com" className="flex items-center gap-2 hover:text-primary transition-colors">
+              <a href="mailto:email@datafronteira.com" className="flex items-center gap-2 hover:text-primary transition-colors">
                 <Mail size={16} />
-                hi@datafronteira.com
+                email@datafronteira.com
+              </a>
+              <a href="mailto:datafronteira@gmail.com" className="flex items-center gap-2 hover:text-primary transition-colors">
+                <Mail size={16} />
+                datafronteira@gmail.com
               </a>
               <a href="tel:+2347041300104" className="flex items-center gap-2 hover:text-primary transition-colors">
                 <Phone size={16} />
@@ -184,6 +270,38 @@ export function Footer() {
                 </li>
               ))}
             </ul>
+          </div>
+
+          {/* Newsletter */}
+          <div>
+            <h4 className="font-display font-semibold text-foreground mb-4">Newsletter</h4>
+            <p className="text-sm text-muted-foreground mb-4">
+              Stay updated with our latest insights and data trends.
+            </p>
+            <form onSubmit={handleNewsletterSubmit} className="space-y-3">
+              <div className="flex gap-2">
+                <Input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="bg-secondary/50 border-border text-sm"
+                />
+                <Button
+                  type="submit"
+                  size="icon"
+                  disabled={isSubmitting}
+                  className="flex-shrink-0"
+                >
+                  {isSubmitting ? (
+                    <div className="w-4 h-4 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin" />
+                  ) : (
+                    <Send size={16} />
+                  )}
+                </Button>
+              </div>
+            </form>
           </div>
         </div>
 

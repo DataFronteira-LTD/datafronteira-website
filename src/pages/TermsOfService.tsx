@@ -202,7 +202,7 @@ export default function TermsOfService() {
                   If you have any questions about these Terms of Service, please contact us:
                 </p>
                 <div className="space-y-2 text-muted-foreground">
-                  <p><strong>Email:</strong> <a href="mailto:hi@datafronteira.com" className="text-primary hover:underline">hi@datafronteira.com</a></p>
+                  <p><strong>Email:</strong> <a href="mailto:email@datafronteira.com" className="text-primary hover:underline">email@datafronteira.com</a> or <a href="mailto:datafronteira@gmail.com" className="text-primary hover:underline">datafronteira@gmail.com</a></p>
                   <p><strong>Phone:</strong> <a href="tel:+2347041300104" className="text-primary hover:underline">+234 704 130 0104</a></p>
                   <p><strong>Address:</strong> Abuja, Nigeria</p>
                 </div>

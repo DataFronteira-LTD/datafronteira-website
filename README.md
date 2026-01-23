@@ -119,7 +119,7 @@ Live chat is configured in `index.html` with Tawk.to integration.
 
 ## 📧 Contact Information
 
-- **Email**: hi@datafronteira.com
+- **Email**: email@datafronteira.com or datafronteira@gmail.com
 - **Phone**: +234 704 130 0104
 - **Address**: No. 10 Durban Street, Wuse 2, Abuja, Nigeria
 - **Business Hours**: Monday – Friday: 9AM – 5PM (GMT)
@@ -140,7 +140,7 @@ Live chat is configured in `index.html` with Tawk.to integration.
 
 ## 🤝 Contributing
 
-This is a private project for DataFronteira Ltd. For inquiries, please contact hi@datafronteira.com.
+This is a private project for DataFronteira Ltd. For inquiries, please contact email@datafronteira.com or datafronteira@gmail.com.
 
 ---
 

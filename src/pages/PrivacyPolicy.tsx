@@ -136,7 +136,7 @@ export default function PrivacyPolicy() {
                   <li>The right to withdraw consent</li>
                 </ul>
                 <p className="text-muted-foreground leading-relaxed mt-4">
-                  To exercise these rights, please contact us at <a href="mailto:hi@datafronteira.com" className="text-primary hover:underline">hi@datafronteira.com</a>.
+                  To exercise these rights, please contact us at <a href="mailto:email@datafronteira.com" className="text-primary hover:underline">email@datafronteira.com</a> or <a href="mailto:datafronteira@gmail.com" className="text-primary hover:underline">datafronteira@gmail.com</a>.
                 </p>
               </section>
 
@@ -174,7 +174,7 @@ export default function PrivacyPolicy() {
                   If you have any questions about this Privacy Policy, please contact us:
                 </p>
                 <div className="mt-4 space-y-2 text-muted-foreground">
-                  <p><strong>Email:</strong> <a href="mailto:hi@datafronteira.com" className="text-primary hover:underline">hi@datafronteira.com</a></p>
+                  <p><strong>Email:</strong> <a href="mailto:email@datafronteira.com" className="text-primary hover:underline">email@datafronteira.com</a> or <a href="mailto:datafronteira@gmail.com" className="text-primary hover:underline">datafronteira@gmail.com</a></p>
                   <p><strong>Phone:</strong> <a href="tel:+2347041300104" className="text-primary hover:underline">+234 704 130 0104</a></p>
                   <p><strong>Address:</strong> Abuja, Nigeria</p>
                 </div>
