@@ -34,6 +34,7 @@ const navItems = [
       { label: "Others", href: "/industries/others" },
     ]
   },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
