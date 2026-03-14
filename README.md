@@ -90,10 +90,10 @@ frontier-forge/
 
 The contact form uses EmailJS to send emails. Configuration is in `src/pages/Contact.tsx`:
 
-- **Public Key**: `OgzxDm5d23KAiLsTvTM5a`
-- **Service ID**: `service_pgpgob8`
-- **Template ID**: `template_dbbt20w`
-- **Recipient Email**: `datafronteira@gmail.com`
+- **Public Key**: `#`
+- **Service ID**: `#`
+- **Template ID**: `#`
+- **Recipient Email**: `#@gmail.com`
 
 ### Tawk.to Chat Widget
 
